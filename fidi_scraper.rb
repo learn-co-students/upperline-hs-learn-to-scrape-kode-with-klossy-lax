@@ -36,7 +36,8 @@ puts justinos_stars
 flavors_pic = fidi_nokogiri.css("div.restaurant.r7 div.photo-desc img.src").text
 puts flavors_pic
 
-restaurants_with_stars = fidi_nokogiri.css("div.restaurant h2", "div.restaurant p").each do |name, stars|
-    puts "#{name.text}"
-    end
-puts restaurants_with_stars
+restaurants = fidi_nokogiri.css("div.restaurant").collect do |name| 
+    all = name.css("h2") + name.css("p") 
+    all.text 
+end
+puts restaurants
